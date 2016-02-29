@@ -6,9 +6,10 @@ RUN apt-get update \
     ca-certificates \
     wget \
  && apt-get clean \
- && rm -r /var/lib/apt/lists/*
+ && apt-get autoremove -y \
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
 
-ADD entrypoint.sh /entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
 
 VOLUME ["/var/config-nginx/"]
