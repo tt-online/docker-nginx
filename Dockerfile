@@ -1,4 +1,4 @@
-FROM nginx:1.9.11
+FROM nginx:1.10
 
 # Install wget and install/updates certificates
 RUN apt-get update \
@@ -7,7 +7,7 @@ RUN apt-get update \
     wget \
  && apt-get clean \
  && apt-get autoremove -y \
- && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+ && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod 777 /entrypoint.sh
